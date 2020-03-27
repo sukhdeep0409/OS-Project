@@ -1,0 +1,38 @@
+int totalsum=arrival[0];
+        for (int i = 0;i < n;i++){
+            waiting[i] = (totalsum - arrival[i]);
+            turn[i] = burst[i] + waiting[i];
+            totalsum += burst[i];
+        }
+
+        /*Displaying the process after sorting according to the priority */
+
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("DISPLAYING THE RESULT AFTER IMPLEMENTING ALGORITHM");
+        System.out.println("--------------------------------------------------");
+
+        System.out.println("\nProcess \t Arrival Time \t Burst Time \t Waiting Time \t Turnaround Time");
+        System.out.println("------- \t ------------ \t ---------- \t ------------ \t ---------------");
+        for (int i = 0;i < n;i++)
+            System.out.println(process[i]+"\t\t\t"+arrival[i]+"\t\t\t  "+burst[i]+"\t\t\t\t  "+waiting[i]+"\t\t\t\t    "+turn[i]);
+
+        /* Displaying the average waiting time and average turnaround time */
+
+        double waiting_avg = 0.0;
+        double turn_avg = 0.0;
+
+
+        /** It displays the average of the calculated details */
+        for (int i = 0;i < n;i++) {
+            waiting_avg = waiting_avg + waiting[i];
+            turn_avg = turn_avg + turn[i];
+        }
+
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        System.out.println();
+
+        System.out.println("\n---------------------------");
+        System.out.println("Average waiting time : " + df.format(waiting_avg/n));
+        System.out.println("Average turnaround time : " + df.format(turn_avg/n));
+        System.out.println("---------------------------");
